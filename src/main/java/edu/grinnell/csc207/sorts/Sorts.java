@@ -26,16 +26,15 @@ public class Sorts {
      * @param arr the array to sort
      */
     public static <T extends Comparable<? super T>> void bubbleSort(T[] arr) {
-       for(int j = arr.length - 1; j >= 0; j--){
-        int tracker = 0;
-        for (int i = 1; i < j; i++){
-            if(arr[tracker].compareTo(arr[i]) < 0){
-                tracker = i;
-            }
-        } 
-        swap(arr, tracker, j); 
-       } 
-        
+       int length= arr.length; 
+       for(int i=0; i<length; i++)
+       {
+        for(int j=0; i<length-i; j++)
+        {
+            if(arr[j].compareTo(arr[j+1]) > 0)
+                swap(arr, j, j+1);
+        }
+       }
     }
 
     /**
@@ -48,10 +47,10 @@ public class Sorts {
      */
     public static <T extends Comparable<? super T>> void selectionSort(T[] arr) {
         for(int j = 0; j < arr.length; j++){
-            int tracker = j;
+            int tracker = j; //tracks largest element in unsorted region
             for (int i = j + 1; i < arr.length; i++){
                 if(arr[tracker].compareTo(arr[i]) > 0){
-                    tracker = i;
+                    tracker = i; //store new largest element in unsorted region
                 }
             } 
             swap(arr, tracker, j); 
@@ -76,11 +75,11 @@ public class Sorts {
                     break;
             }
             T hold= arr[j];
-            for(int w=j; w>i; w--)
+            for(int w=j; w>i; w--) // shifts all elements between i and j to the right
             {
                 swap(arr, w, w-1);
             }
-            arr[i]= hold;
+            arr[i]= hold; //moves element at j to i
         }
     }
 
