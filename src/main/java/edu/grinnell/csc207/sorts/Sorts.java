@@ -1,5 +1,7 @@
 package edu.grinnell.csc207.sorts;
 
+import java.lang.reflect.Array;
+
 /**
  * A collection of sorting algorithms over generic arrays.
  */
@@ -94,8 +96,63 @@ public class Sorts {
      * @param arr the array to sort
      */
     public static <T extends Comparable<? super T>> void mergeSort(T[] arr) {
-        // TODO: fill me in!
+        //FIX LATER
+
+        T[] left = new <T>Array(arr.length/2);
+        T[] right = new <T>Array(arr.length - arr.length/2);
+
+        if(arr.length > 1){
+            mergeSort(left);
+            mergeSort(right);
+        }
+
+
+
     }
+
+    public static <T extends Comparable<? super T>> T[] Array mergehelp(T[] left, T[] right)
+    {
+        T[] merged= new Array[left.length + right.length];
+
+        int leftIn= 0;
+        int rightIn= 0;
+        int mergedIn= 0;
+
+        while(mergedIn < merged.length)
+        {
+            if(leftIn >= left.length)
+            {
+                while (rightIn < right.length){
+                    merged[mergedIn] = right[rightIn];
+                    mergedIn++;
+                    rightIn++;
+                }            
+            } 
+            else if (rightIn >= right.length){
+                while (leftIn < left.length){
+                    merged[mergedIn] = left[leftIn];
+                    mergedIn++;
+                    leftIn++;
+                }
+            }
+            if(left[leftIn].compareTo(right[rightIn]) > 0)
+            {
+                merged[mergedIn] = left[leftIn];
+                leftIn++;
+            }
+            else
+            {
+                merged[mergedIn] = right[rightIn];
+                rightIn++;
+            }
+            mergedIn++;
+        }
+    }
+
+
+    }
+
+   
 
     /**
      * Sorts the array according to the quick sort algorithm:
