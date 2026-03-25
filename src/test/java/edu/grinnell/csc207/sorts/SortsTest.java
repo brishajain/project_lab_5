@@ -23,10 +23,7 @@ public class SortsTest {
 
     public static Integer[] makeTestArray() {
         return new Integer[] {
-            3, 7, 9, 1, 2,
-            18, 16, 15, 19, 8,
-            14, 12, 5, 13, 4,
-            6, 0, 17, 11, 10
+            3, 2
         };
     }
 

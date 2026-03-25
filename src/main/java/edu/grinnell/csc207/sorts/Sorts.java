@@ -33,7 +33,7 @@ public class Sorts {
     public static <T extends Comparable<? super T>> void bubbleSort(T[] arr) {
         int length = arr.length;
         for (int i = 0; i < length; i++) {
-            for (int j = 0; i < length - i; j++) {
+            for (int j = 0; j < length - i - 1; j++) {
                 if (arr[j].compareTo(arr[j + 1]) > 0)
                     swap(arr, j, j + 1);
             }
@@ -157,7 +157,7 @@ public class Sorts {
             swap(arr, mid, end);
 
             while (leftpoint < rightpoint) {
-                if (arr[leftpoint].compareTo(arr[end]) < 0)
+                if (arr[leftpoint].compareTo(arr[end]) > 0)
                     leftpoint++;
                 else if (arr[rightpoint].compareTo(arr[end]) < 0)
                     rightpoint--;
